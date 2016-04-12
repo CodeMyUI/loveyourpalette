@@ -1,21 +1,15 @@
-# Love You Palette
+# Love Your Palette
 
-A simple palette testing website. See how you colors work together quickly and easily.
+A simple palette testing tool.
 
-## Usage
-
-_You can access the latest version of this tool at [http://palettetest.org/](http://palettetest.org/)._
-
-Palette Test is designed to allow you to visualize how your palette will look on a modern website. The tool is based on a 6 color palette consiting of a primary and accent color as well as black, dark gray, light gray, and white. [Smashing Magazine](https://www.smashingmagazine.com/2016/04/web-developer-guide-color/) has a great article on how to create a color pallete.
-
-Once you are in the site click on the `Edit Palette` button in the navigation bar. Enter your HEX color codes into the popup window and click finished. The site will now show your new color pallete. The URL will be updated with the color palette if you wish to share the new pallete with friends, coworkers, or clients.
+See this tool in action at http://loveyourpalette.com.
 
 ## Build This Project
 
-If you wish to run this project on you local machine simply use the commands below. This enters the site into development mode and uses BrowserSync to regenerate the site eachtime you update the code.
+If you wish to run this project on you local machine simply use the commands below. This enters the site into development mode and uses BrowserSync to refresh the site each time you update the code.
 
 ```shell
-~$ git clone https://github.com/nrdobie/palettetest
+~$ git clone https://github.com/nrdobie/loveyourpalette
 ~$ cd palettetest
 ~$ npm install
 ~$ npm start
@@ -29,4 +23,4 @@ If you want to upload this project to be accessible from more than you computer 
 npm run build
 ```
 
-This will create a `build/` folder with your production ready code.
+This will create a `.dist/` folder with your production ready code.
