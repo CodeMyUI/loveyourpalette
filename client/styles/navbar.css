@@ -1,0 +1,35 @@
+.NavBar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: .5rem;
+  width: 100%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+  position: fixed;
+  z-index: 2;
+}
+
+.NavBar_logo {
+  width: 3rem;
+}
+
+.NavBar_title {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.NavBar_spacer {
+  flex-grow: 1;
+}
+
+.NavBar_item {
+  margin: 0 .5rem;
+}
+
+.NavBar_item--button {
+  padding: .5rem 1rem;
+  border-radius: 5rem;
+  border: 1px solid;
+}

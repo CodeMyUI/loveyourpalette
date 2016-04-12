@@ -1,0 +1,22 @@
+.Palette {
+  display: flex;
+}
+
+.Palette_color {
+  flex-grow: 1;
+  flex-basis: 0;
+
+  font-family: monospace;
+  font-size: 24px;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Palette_color:before {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}

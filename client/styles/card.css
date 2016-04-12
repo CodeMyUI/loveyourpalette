@@ -1,0 +1,44 @@
+.Cards {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.Card {
+  flex-grow: 1;
+  flex-basis: 0;
+  padding: 1rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin-right: 2rem;
+}
+
+.Card--center {
+  text-align: center;
+}
+
+.Card:last-child {
+  margin-right: 0;
+}
+
+.Card_icon {
+  width: 33%;
+  margin: 0 auto 1rem;
+}
+
+.Card_title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.Card_callToAction {
+  display: inline-block;
+
+  text-decoration: none;
+
+  padding: 0 2rem;
+  border-radius: 5rem;
+
+  font-size: 1rem;
+  line-height: 2rem;
+}
