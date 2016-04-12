@@ -2,7 +2,7 @@
 
 const React = require('react');
 
-const IconCircleHeart = require('../icons/circle-heart');
+const IconHands = require('../icons/hands');
 const IconSettings = require('../icons/settings');
 const IconOrigamiBird = require('../icons/origami-bird');
 
@@ -23,20 +23,17 @@ let CardSet = function (props) {
       </div>
       <div className="Card Card--center" style={{backgroundColor: props.white}}>
         <div className="Card_icon">
-          <IconCircleHeart {...props} />
+          <IconHands {...props} />
         </div>
-        <div className="Card_title">Get Some Inspiration</div>
-        <p>Not sure where to start? Click the button below to have Love Your Palette create a completely random palette.</p>
-        <p>
-          <a className="Card_callToAction" style={{backgroundColor: props.primary, color: props.white}}>Create Random Palette</a>
-        </p>
+        <div className="Card_title">Share Some Inspiration</div>
+        <p>Want to share your palette with a friend? What about a client? Love Your Palette is easy to share. Simply copy the URL in the address bar above and whomever you want can instantly see your palette.</p>
       </div>
       <div className="Card Card--center" style={{backgroundColor: props.white}}>
         <div className="Card_icon">
           <IconSettings {...props} />
         </div>
         <div className="Card_title">Make LYP Your Own</div>
-        <p>Want to demo this to a client? You can easily fork and customize Love Your Palette to be what ever you want to demo. This project is licensed under the MIT open source license so feel free to use this project however you want, even comercially.</p>
+        <p>Want to integrate Love Your Palette into your business? You can easily fork and customize Love Your Palette to be what ever you want to demo. This project is licensed under the MIT open source license so feel free to use this project however you want, even comercially.</p>
         <p>
           <a className="Card_callToAction" href="http://github.com/nrdobie/loveyourpalette" style={{backgroundColor: props.primary, color: props.white}}>Fork on GitHub</a>
         </p>
