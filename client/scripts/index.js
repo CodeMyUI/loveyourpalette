@@ -13,6 +13,17 @@ let store = require('./store');
 
 require('./utilities/style-generator');
 
+store.subscribe(function () {
+  let palette = store.getState().palette;
+  let path = `/${palette.primary}/${palette.accent}/${palette.darkGray}/${palette.lightGray}/${palette.white}/`
+
+  path = path.replace(/\#/g, '');
+
+  hashHistory.push({
+    pathname: path
+  });
+});
+
 ReactDOM.render(
   <Provider store={store}>
     <Router routes={routes} history={hashHistory} />

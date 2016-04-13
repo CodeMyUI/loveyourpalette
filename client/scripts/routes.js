@@ -1,6 +1,6 @@
 'use strict';
 
-let App = require('./components/app');
+let App = require('./containers/app');
 
 module.exports = {
   path: '/(:primary)(/:accent)(/:darkGray)(/:lightGray)(/:white)',
