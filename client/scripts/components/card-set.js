@@ -2,10 +2,7 @@
 
 const React = require('react');
 
-const IconHands = require('../icons/hands');
-const IconSettings = require('../icons/settings');
 const Icon = require('./icon');
-
 
 let CardSet = function (props) {
 
