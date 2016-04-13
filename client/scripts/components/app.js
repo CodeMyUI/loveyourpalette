@@ -4,7 +4,7 @@ const React = require('react');
 const NavBar = require('../components/navbar');
 const Hero = require('../components/hero');
 const CardSet = require('../components/card-set');
-const Palette = require('../components/palette');
+const Palette = require('../containers/palette');
 const Footer = require('../components/footer');
 
 class App extends React.Component {
@@ -45,8 +45,6 @@ class App extends React.Component {
   }
 
   render() {
-
-    document.getElementsByTagName('body')[0].style.backgroundColor = this.state.colors.lightGray;
 
     return (
       <div style={{color: this.state.colors.darkGray}}>

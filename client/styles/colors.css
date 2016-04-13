@@ -1,0 +1,24 @@
+body {
+  background-color: var(--color-light-gray);
+}
+
+/*
+  _   _
+ | | | | ___ _ __ ___
+ | |_| |/ _ \ '__/ _ \
+ |  _  |  __/ | | (_) |
+ |_| |_|\___|_|  \___/
+*/
+
+.Hero {
+  background-color: var(--color-primary);
+}
+
+.Hero_title, .Hero_subtitle {
+  color: var(--color-white);
+}
+
+.Hero_callToAction {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}

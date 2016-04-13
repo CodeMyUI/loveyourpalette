@@ -23,6 +23,10 @@ module.exports = {
     filename: '[name].bundle.js'
   },
 
+  node: {
+    fs: 'empty'
+  },
+
   module: {
     loaders: [
       {
@@ -35,6 +39,11 @@ module.exports = {
         test: /.css$/,
         include: path.resolve(__dirname, 'client/styles'),
         loader: ExtractTextWebpackPlugin.extract("style", "css!postcss")
+      },
+
+      {
+        test: /.json$/,
+        loader: 'json'
       }
     ]
   },

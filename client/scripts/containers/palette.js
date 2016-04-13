@@ -3,7 +3,7 @@
 const React = require('react');
 const TinyColor = require('tinycolor2');
 
-const HexInput = require('./hex-input');
+const HexInput = require('../components/hex-input');
 
 class Palette extends React.Component {
 
