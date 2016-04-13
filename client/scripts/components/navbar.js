@@ -2,14 +2,14 @@
 
 const React = require('react');
 
-const IconColorPalette = require('../icons/color-palette');
+const Icon = require('./icon');
 
 let NavBar = function (props) {
 
   return (
     <div className="NavBar">
       <div className="NavBar_logo">
-        <IconColorPalette primary={props.primary} accent={props.accent} darkGray={props.darkGray} />
+        <Icon glyph={Icon.GLYPHS.COLOR_PALETTE} />
       </div>
       <div className="NavBar_title">Love Your Palette</div>
       <div className="NavBar_spacer"></div>

@@ -42,8 +42,9 @@ module.exports = {
       },
 
       {
-        test: /.json$/,
-        loader: 'json'
+        test: /.svg$/,
+        include: path.resolve(__dirname, 'client/assets/icon'),
+        loader: 'svg-sprite?name=[name]_[hash]'
       }
     ]
   },

@@ -8,6 +8,30 @@ a {
 }
 
 /*
+  ______     ______
+ / ___\ \   / / ___|
+ \___ \\ \ / / |  _
+  ___) |\ V /| |_| |
+ |____/  \_/  \____|
+*/
+
+.SVG {
+  max-width: 100%;
+}
+
+.SVG--fillGray {
+  fill: var(--color-dark-gray);
+}
+
+.SVG--fillPrimary {
+  fill: var(--color-primary);
+}
+
+.SVG--fillAccent {
+  fill: var(--color-accent);
+}
+
+/*
   _   _             ____
  | \ | | __ ___   _| __ )  __ _ _ __
  |  \| |/ _` \ \ / /  _ \ / _` | '__|
