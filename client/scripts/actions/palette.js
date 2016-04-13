@@ -4,7 +4,7 @@ const ReduxActions = require('redux-actions');
 
 const CHANGE_COLOR = Symbol('CHANGE_COLOR');
 
-let changeColor = ReduxActions.createAction(CHANGE_COLOR);
+let changeColor = ReduxActions.createAction(CHANGE_COLOR, (colorKey, colorValue) => { return { colorKey, colorValue }; });
 
 const CHANGE_PALETTE = Symbol('CHANGE_PALETTE');
 

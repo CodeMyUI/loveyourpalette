@@ -47,12 +47,12 @@ class App extends React.Component {
   render() {
 
     return (
-      <div style={{color: this.state.colors.darkGray}}>
+      <div>
         <NavBar {...this.state.colors} />
         <Hero {...this.state.colors} />
         <div className="Container">
           <CardSet {...this.state.colors} />
-          <Palette {...this.state.colors} />
+          <Palette />
           <Footer />
         </div>
       </div>

@@ -1,48 +1,51 @@
 'use strict';
 
 const React = require('react');
-const TinyColor = require('tinycolor2');
+const ReactRedux = require('react-redux');
 
-const HexInput = require('../components/hex-input');
+const PaletteActions = require('../actions/palette');
+const PaletteSwatch = require('../components/palette-swatch');
 
 class Palette extends React.Component {
 
   render() {
 
-    let mrOpt = [ this.props.darkGray, this.props.white ];
-
     return (
       <div className="Cards">
-        <div className="Card" style={{backgroundColor: this.props.white}}>
-          <h2 className="Card_title">Curent Palette</h2>
+        <div className="Card">
+          <h2 className="Card_title">Current Palette</h2>
           <p>Click HEX codes to edit palette colors.</p>
           <div className="Palette">
-            <div className="Palette_color" style={{backgroundColor: this.props.primary}} >
-              <div className="Palette_colorHex" style={{color: TinyColor.mostReadable(this.props.primary, mrOpt)}}>
-                Primary<br/>
-                <HexInput value={this.props.primary} />
-              </div>
-            </div>
-            <div className="Palette_color" style={{backgroundColor: this.props.accent}} >
-              <div className="Palette_colorHex" style={{color: TinyColor.mostReadable(this.props.accent, mrOpt)}}>
-                Accent<br/>{this.props.accent}
-              </div>
-            </div>
-            <div className="Palette_color" style={{backgroundColor: this.props.darkGray}} >
-              <div className="Palette_colorHex" style={{color: TinyColor.mostReadable(this.props.darkGray, mrOpt)}}>
-                Dark Gray<br/>{this.props.darkGray}
-              </div>
-            </div>
-            <div className="Palette_color" style={{backgroundColor: this.props.lightGray}} >
-              <div className="Palette_colorHex" style={{color: TinyColor.mostReadable(this.props.lightGray, mrOpt)}}>
-                Light Gray<br/>{this.props.lightGray}
-              </div>
-            </div>
-            <div className="Palette_color" style={{backgroundColor: this.props.white}} >
-              <div className="Palette_colorHex" style={{color: TinyColor.mostReadable(this.props.white, mrOpt)}}>
-                White<br/>{this.props.white}
-              </div>
-            </div>
+            <PaletteSwatch
+              key="primary"
+              colorKey="primary"
+              label="Primary"
+              value={this.props.primary}
+              onUpdate={this.props.onUpdate} />
+            <PaletteSwatch
+              key="accent"
+              colorKey="accent"
+              label="Accent"
+              value={this.props.accent}
+              onUpdate={this.props.onUpdate} />
+            <PaletteSwatch
+              key="darkGray"
+              colorKey="darkGray"
+              label="Dark Gray"
+              value={this.props.darkGray}
+              onUpdate={this.props.onUpdate} />
+            <PaletteSwatch
+              key="lightGray"
+              colorKey="lightGray"
+              label="Light Gray"
+              value={this.props.lightGray}
+              onUpdate={this.props.onUpdate} />
+            <PaletteSwatch
+              key="white"
+              colorKey="white"
+              label="White"
+              value={this.props.white}
+              onUpdate={this.props.onUpdate} />
           </div>
         </div>
       </div>
@@ -52,5 +55,13 @@ class Palette extends React.Component {
 
 }
 
+let mapStateToProps = (state) => state.palette;
+let mapDispatchToProps = function (dispatch) {
+  return {
+    onUpdate: function (colorKey, value) {
+      dispatch(PaletteActions.changeColor(colorKey, value));
+    }
+  }
+};
 
-module.exports = Palette;
+module.exports = ReactRedux.connect(mapStateToProps, mapDispatchToProps)(Palette);

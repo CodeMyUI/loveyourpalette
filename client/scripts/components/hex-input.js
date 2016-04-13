@@ -19,15 +19,15 @@ class HexInput extends React.Component {
 
     let color = TinyColor(this.state.value);
 
-    this.setState({focused: false, value: '#' + color.toHex() });
+    this.setState({focused: false, value: '#' + color.toHex().toUpperCase() });
+
+    this.props.onUpdate(this.props.colorKey, this.state.value);
 
     return false;
   }
 
   updateValue(event) {
     this.setState({value: event.target.value});
-
-    console.log(event.target.value, TinyColor(event.target.value).isValid());
   }
 
   componentDidUpdate() {

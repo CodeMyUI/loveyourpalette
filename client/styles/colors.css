@@ -1,5 +1,32 @@
 body {
   background-color: var(--color-light-gray);
+  color: var(--color-dark-gray);
+}
+
+a {
+  color: var(--color-dark-gray);
+}
+
+/*
+  _   _             ____
+ | \ | | __ ___   _| __ )  __ _ _ __
+ |  \| |/ _` \ \ / /  _ \ / _` | '__|
+ | |\  | (_| |\ V /| |_) | (_| | |
+ |_| \_|\__,_| \_/ |____/ \__,_|_|
+*/
+
+.NavBar {
+  background-color: var(--color-white);
+}
+
+.NavBar_item--button {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.NavBar_item--button:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
 
 /*
@@ -20,5 +47,75 @@ body {
 
 .Hero_callToAction {
   background-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+/*
+  ____       _      _   _
+ |  _ \ __ _| | ___| |_| |_ ___
+ | |_) / _` | |/ _ \ __| __/ _ \
+ |  __/ (_| | |  __/ |_| ||  __/
+ |_|   \__,_|_|\___|\__|\__\___|
+*/
+
+.PaletteSwatch--primary {
+  background-color: var(--color-primary);
+}
+
+.PaletteSwatch--primary .PaletteSwatch_label {
+  color: var(--color-primary-readable);
+}
+
+.PaletteSwatch--accent {
+  background-color: var(--color-accent);
+}
+
+.PaletteSwatch--accent .PaletteSwatch_label {
+  color: var(--color-accent-readable);
+}
+
+.PaletteSwatch--darkGray {
+  background-color: var(--color-dark-gray);
+}
+
+.PaletteSwatch--darkGray .PaletteSwatch_label {
+  color: var(--color-dark-gray-readable);
+}
+
+.PaletteSwatch--lightGray {
+  background-color: var(--color-light-gray);
+}
+
+.PaletteSwatch--lightGray .PaletteSwatch_label {
+  color: var(--color-light-gray-readable);
+}
+
+.PaletteSwatch--white {
+  background-color: var(--color-white);
+}
+
+.PaletteSwatch--white .PaletteSwatch_label {
+  color: var(--color-white-readable);
+}
+
+.HexInput_input {
+  background: var(--color-white);
+  color: var(--color-white-readable);
+}
+
+/*
+   ____              _
+  / ___|__ _ _ __ __| |
+ | |   / _` | '__/ _` |
+ | |__| (_| | | | (_| |
+  \____\__,_|_|  \__,_|
+*/
+
+.Card {
+  background-color: var(--color-white);
+}
+
+.Card_callToAction {
+  background-color: var(--color-primary);
   color: var(--color-white);
 }

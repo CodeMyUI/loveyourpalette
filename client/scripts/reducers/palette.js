@@ -17,7 +17,8 @@ let PaletteReducer = function (state = defaultPalette, action) {
   switch (action.type) {
     case PaletteActions.CHANGE_COLOR:
       let newState = _.clone(state);
-      newState[action.payload.key] = action.payload.color;
+      newState[action.payload.colorKey] = action.payload.colorValue;
+      console.log(action.payload, newState);
       return newState;
     case PaletteActions.CHANGE_PALETTE:
       return _.merge({}, action.payload, defaultPalette);

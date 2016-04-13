@@ -29,6 +29,7 @@ let generateStyleSheet = function (palette) {
     if (variableName in variables) {
       return variables[variableName];
     }
+    console.log('Not Matched', varStatement, variableName)
     return varStatement;
   });
 
