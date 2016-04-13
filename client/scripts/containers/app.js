@@ -13,13 +13,25 @@ const Footer = require('../components/footer');
 
 class App extends React.Component {
 
-  componentDidMount () {
+  componentDidMount() {
+    this.checkPalette();
+  }
+
+  componentDidUpdate() {
+    this.checkPalette();
+  }
+
+  checkPalette () {
 
     let pathPalette = _.clone(this.props.params);
 
     pathPalette = _.pick(pathPalette, _.keys(defaultPalette));
 
+    pathPalette = _.omitBy(pathPalette, _.isUndefined);
+
     pathPalette = _.mapValues(pathPalette, (color) => `#${color.toUpperCase()}`);
+
+    pathPalette = _.defaults({}, pathPalette, defaultPalette);
 
     if(!_.isMatch(pathPalette, this.props.palette)) {
       this.props.onDifferentPalette(pathPalette);
