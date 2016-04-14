@@ -15,10 +15,6 @@ a {
  |____/  \_/  \____|
 */
 
-.SVG {
-  max-width: 100%;
-}
-
 .SVG--fillGray {
   fill: var(--color-dark-gray);
 }
@@ -123,7 +119,7 @@ a {
 }
 
 .HexInput_input {
-  background: var(--color-white);
+  background-color: var(--color-white);
   color: var(--color-white-readable);
 }
 
