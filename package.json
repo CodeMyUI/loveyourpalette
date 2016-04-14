@@ -29,6 +29,7 @@
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.4",
     "react-router": "^2.1.0",
+    "react-scroll": "^1.0.6",
     "redux": "^3.4.0",
     "redux-actions": "^0.9.1",
     "strip-ansi": "^3.0.1",

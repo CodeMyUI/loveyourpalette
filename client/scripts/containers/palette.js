@@ -2,6 +2,7 @@
 
 const React = require('react');
 const ReactRedux = require('react-redux');
+const { Element } = require('react-scroll');
 
 const PaletteActions = require('../actions/palette');
 const PaletteSwatch = require('../components/palette-swatch');
@@ -11,7 +12,7 @@ class Palette extends React.Component {
   render() {
 
     return (
-      <div className="Cards">
+      <Element className="Cards" name="colorPalette">
         <div className="Card">
           <h2 className="Card_title">Current Palette</h2>
           <p>Click HEX codes to edit palette colors.</p>
@@ -48,7 +49,7 @@ class Palette extends React.Component {
               onUpdate={this.props.onUpdate} />
           </div>
         </div>
-      </div>
+      </Element>
     )
 
   }

@@ -25,6 +25,7 @@
 }
 
 .Hero_callToAction {
+  cursor: pointer;
   padding: 0 2rem;
   border-radius: 5rem;
 

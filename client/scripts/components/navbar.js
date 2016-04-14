@@ -1,6 +1,7 @@
 'use strict';
 
 const React = require('react');
+const { Link } = require('react-scroll');
 
 const Icon = require('./icon');
 
@@ -18,7 +19,9 @@ let NavBar = function (props) {
       <div className="NavBar_item">Item 3</div>
       <div className="NavBar_item">Item 4</div>
       <div className="NavBar_item">Item 5</div>
-      <div className="NavBar_item NavBar_item--button">Edit Your Palette</div>
+      <Link className="NavBar_item NavBar_item--button" to="colorPalette" smooth={true} duration={500}>
+        Edit Your Palette
+      </Link>
     </div>
   )
 
