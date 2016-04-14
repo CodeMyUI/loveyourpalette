@@ -26,16 +26,11 @@
 }
 
 .HexInput_plainText {
-  padding-bottom: 1px;
-}
-
-.HexInput.isFocused .HexInput_plainText {
-  display: none;
+  cursor: pointer;
 }
 
 .HexInput_input {
   width: 100%;
-  display: none;
   border: none;
 
   text-align: center;
@@ -44,8 +39,4 @@
   line-height: 2rem;
   padding: 0;
   outline: none;
-}
-
-.HexInput.isFocused .HexInput_input {
-  display: block;
 }

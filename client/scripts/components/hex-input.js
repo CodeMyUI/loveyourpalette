@@ -15,8 +15,11 @@ class HexInput extends React.Component {
     this.setState({ value: nextProps.value });
   }
 
-  componentDidUpdate() {
-    this.refs.input.focus();
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.focused === true && prevState.focused === false) {
+      this.refs.input.focus();
+      this.refs.input.select();
+    }
   }
 
   clickToFocus() {
@@ -48,17 +51,23 @@ class HexInput extends React.Component {
 
   render() {
 
+    let hexCode;
+    if (this.state.focused) {
+      hexCode = <input type="text"
+                       className="HexInput_input"
+                       value={this.state.value}
+                       ref="input"
+                       onKeyPress={this.checkSubmit.bind(this)}
+                       onBlur={this.leaveToBlur.bind(this)}
+                       onChange={this.updateValue.bind(this)}
+                       tabindex="-1" />
+    } else {
+      hexCode = <span className="HexInput_plainText">{this.state.value}</span>
+    }
+
     return (
-      <div className={`HexInput ${this.state.focused ? 'isFocused' : ''}`} onClick={this.clickToFocus.bind(this)}>
-        <span className="HexInput_plainText">{this.state.value}</span>
-        <input type="text"
-               className="HexInput_input"
-               value={this.state.value}
-               ref="input"
-               onKeyPress={this.checkSubmit.bind(this)}
-               onBlur={this.leaveToBlur.bind(this)}
-               onChange={this.updateValue.bind(this)}
-               tabindex="-1" />
+      <div className="HexInput" onClick={this.clickToFocus.bind(this)}>
+        {hexCode}
       </div>
     )
 
