@@ -5,11 +5,12 @@ const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const WebpackMd5Hash = require('webpack-md5-hash');
 
 module.exports = {
 
   // Dev Tools
-  watch: true,
+  watch: false,
   devtool: 'source-map',
 
   context: path.resolve(__dirname, 'client'),
@@ -20,8 +21,8 @@ module.exports = {
   },
 
   output: {
-    path: path.resolve(__dirname, '.build'),
-    filename: '[name].bundle.js'
+    path: path.resolve(__dirname, '.dist'),
+    filename: '[name].[chunkhash].bundle.js'
   },
 
   module: {
@@ -63,6 +64,8 @@ module.exports = {
 
     new CleanWebpackPlugin(['.dist', '.build']),
 
+    new WebpackMd5Hash(),
+
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
 
@@ -73,7 +76,13 @@ module.exports = {
 
     new webpack.NoErrorsPlugin(),
 
-    new ExtractTextWebpackPlugin('[name].style.css'),
+    new ExtractTextWebpackPlugin('[name].[chunkhash].style.css'),
+
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    }),
 
     new HTMLWebpackPlugin({
       template: 'index.html',

@@ -1,16 +1,16 @@
 'use strict';
 
 const React = require('react');
-const TinyColor = require('tinycolor2');
+const { Link } = require('react-scroll');
 
-const IconColorPalette = require('../icons/color-palette');
+const Icon = require('./icon');
 
 let NavBar = function (props) {
 
   return (
-    <div className="NavBar" style={{backgroundColor: props.white}}>
+    <div className="NavBar">
       <div className="NavBar_logo">
-        <IconColorPalette primary={props.primary} accent={props.accent} darkGray={props.darkGray} />
+        <Icon glyph={Icon.GLYPHS.COLOR_PALETTE} />
       </div>
       <div className="NavBar_title">Love Your Palette</div>
       <div className="NavBar_spacer"></div>
@@ -19,7 +19,9 @@ let NavBar = function (props) {
       <div className="NavBar_item">Item 3</div>
       <div className="NavBar_item">Item 4</div>
       <div className="NavBar_item">Item 5</div>
-      <div className="NavBar_item NavBar_item--button" style={{borderColor: props.primary, color: props.primary}}>Edit Your Palette</div>
+      <Link className="NavBar_item NavBar_item--button" to="colorPalette" smooth={true} duration={500}>
+        Edit Your Palette
+      </Link>
     </div>
   )
 

@@ -11,6 +11,17 @@ class HexInput extends React.Component {
     this.state = { focused: false, value: props.value };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ value: nextProps.value });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.focused === true && prevState.focused === false) {
+      this.refs.input.focus();
+      this.refs.input.select();
+    }
+  }
+
   clickToFocus() {
     this.setState({focused: true});
   }
@@ -19,35 +30,44 @@ class HexInput extends React.Component {
 
     let color = TinyColor(this.state.value);
 
-    this.setState({focused: false, value: '#' + color.toHex() });
+    this.setState({focused: false, value: '#' + color.toHex().toUpperCase() });
+
+    this.props.onUpdate(this.props.colorKey, '#' + color.toHex().toUpperCase());
 
     return false;
   }
 
-  updateValue(event) {
-    this.setState({value: event.target.value});
+  checkSubmit(event) {
 
-    console.log(event.target.value, TinyColor(event.target.value).isValid());
+    if (event.which === 13) {
+      this.refs.input.blur();
+    }
+
   }
 
-  componentDidUpdate() {
-    this.refs.input.focus();
+  updateValue(event) {
+    this.setState({value: event.target.value});
   }
 
   render() {
 
+    let hexCode;
+    if (this.state.focused) {
+      hexCode = <input type="text"
+                       className="HexInput_input"
+                       value={this.state.value}
+                       ref="input"
+                       onKeyPress={this.checkSubmit.bind(this)}
+                       onBlur={this.leaveToBlur.bind(this)}
+                       onChange={this.updateValue.bind(this)}
+                       tabindex="-1" />
+    } else {
+      hexCode = <span className="HexInput_plainText">{this.state.value}</span>
+    }
+
     return (
-      <div className={`HexInput ${this.state.focused ? 'isFocused' : ''}`} onClick={this.clickToFocus.bind(this)}>
-        <span className="HexInput_plainText">{this.state.value}</span>
-        <form onSubmit={this.leaveToBlur.bind(this)}>
-          <input type="text"
-                 className="HexInput_input"
-                 value={this.state.value}
-                 ref="input"
-                 onBlur={this.leaveToBlur.bind(this)}
-                 onChange={this.updateValue.bind(this)}
-                 tabindex="-1" />
-        </form>
+      <div className="HexInput" onClick={this.clickToFocus.bind(this)}>
+        {hexCode}
       </div>
     )
 

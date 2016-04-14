@@ -1,60 +1,52 @@
 'use strict';
 
 const React = require('react');
+const ReactRedux = require('react-redux');
+
+const PaletteActions = require('../actions/palette');
+const defaultPalette = require('../config/default-palette');
 const NavBar = require('../components/navbar');
 const Hero = require('../components/hero');
 const CardSet = require('../components/card-set');
-const Palette = require('../components/palette');
+const Palette = require('../containers/palette');
 const Footer = require('../components/footer');
 
 class App extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = { colors: {
-      primary: '#929292',
-      accent: '#676767',
-      darkGray: '#333333',
-      lightGray: '#F8F8F8',
-      white: '#FFFFFF'
-    }}
-  }
-
   componentDidMount() {
+    this.checkPalette();
+  }
 
-    this.setState({ colors: {
-        primary: '#' + (this.props.params.primary || '929292'),
-        accent: '#' + (this.props.params.accent || '676767'),
-        darkGray: '#' + (this.props.params.darkGray || '333333'),
-        lightGray: '#' + (this.props.params.lightGray || 'F8F8F8'),
-        white: '#' + (this.props.params.white || 'FFFFFF')
-      }});
+  componentDidUpdate() {
+    this.checkPalette();
+  }
+
+  checkPalette () {
+
+    let pathPalette = _.clone(this.props.params);
+
+    pathPalette = _.pick(pathPalette, _.keys(defaultPalette));
+
+    pathPalette = _.omitBy(pathPalette, _.isUndefined);
+
+    pathPalette = _.mapValues(pathPalette, (color) => `#${color.toUpperCase()}`);
+
+    pathPalette = _.defaults({}, pathPalette, defaultPalette);
+
+    if(!_.isMatch(pathPalette, this.props.palette)) {
+      this.props.onDifferentPalette(pathPalette);
+    }
 
   }
 
-  componentWillReceiveProps(nextProps) {
-
-      this.setState({ colors: {
-        primary: '#' + (nextProps.params.primary || '929292'),
-        accent: '#' + (nextProps.params.accent || '676767'),
-        darkGray: '#' + (nextProps.params.darkGray || '333333'),
-        lightGray: '#' + (nextProps.params.lightGray || 'F8F8F8'),
-        white: '#' + (nextProps.params.white || 'FFFFFF')
-      }});
-  }
-
-  render() {
-
-    document.getElementsByTagName('body')[0].style.backgroundColor = this.state.colors.lightGray;
-
+  render () {
     return (
-      <div style={{color: this.state.colors.darkGray}}>
-        <NavBar {...this.state.colors} />
-        <Hero {...this.state.colors} />
+      <div>
+        <NavBar />
+        <Hero />
         <div className="Container">
-          <CardSet {...this.state.colors} />
-          <Palette {...this.state.colors} />
+          <CardSet />
+          <Palette />
           <Footer />
         </div>
       </div>
@@ -63,4 +55,13 @@ class App extends React.Component {
 
 }
 
-module.exports = App;
+let mapStateToProps = (state) => { return { palette: state.palette }; };
+let mapDispatchToProps = function (dispatch) {
+  return {
+    onDifferentPalette: function (palette) {
+      dispatch(PaletteActions.changePalette(palette));
+    }
+  }
+};
+
+module.exports = ReactRedux.connect(mapStateToProps, mapDispatchToProps)(App);
